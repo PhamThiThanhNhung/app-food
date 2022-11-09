@@ -1,11 +1,11 @@
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch } from 'react-icons/ai';
 
 function Search() {
   return (
     <div className="relative w-[740px] h-[70]">
       <input
         type="text"
-        className="w-[740px] h-[70px] px-4 focus:outline-none rounded-[50px] "
+        className="w-[740px] h-[70px] px-4 focus:outline-none focus-within:outline-none rounded-[50px] "
         placeholder=" Seach for food, coffe, ect,..."
       />
       <div className="w-[70px] h-[70px] bg-[#BB0707] rounded-[50px] absolute right-0 top-0">

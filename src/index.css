@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -18,98 +18,4 @@ code {
 *{
   transition: .3s linear;
   /*Tat ca cac phan tu css transition 2s*/
-}
-
-:root {
-  --primary-color: #BB0707;
-  --white: #ffffff;
-  /*Tạo key*/
-}
-
-.colorPrimary{
-  color: var(--primary-color); 
-}
-.whiteColor{
-  color: var(--white);
-}
-
-
-.hoverCustomer:hover .bottomProduct{
-  background-color: #FFB100;
-}
-
-.hoverCustomer:hover .topProduct{
-  background-color: #FFB100;
-  opacity: .3;  
-}
-
-.hoverCustomer:hover .iconP{
-  visibility: visible;
-  transform: scale(1.5);
-}
-
-.hoverCustomer:hover .sale{
-  visibility: hidden;
-} 
-
-.iconDetail{
-  display: flex;  
-  gap: 2rem; 
-  position: absolute;
-  top: 35%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-}
-
-.iconP{
-  height:50px;
-  visibility: hidden;
-  /*thuoc tinh an di*/ 
-}
-.sale{
-  position: absolute;
-  color: white  ;
-  top: 0;
-  left: 0;
-  padding: 5px 20px;
-  border-radius: 30px 0;
-  background-color: var(--primary-color);    
-}
-.header{
-  position: relative;
-}
-.searchBox{
-  position: relative;
-  position: absolute;
-  top:12%;
-  bottom: 12%;
-  left:20%;
-}
-.searchIcon{
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.heartIcon{
-  position: absolute;
-  left: 78%;
-  top: 15%;
-  bottom: 12%;
-}
-.cartIcon{
-  position: absolute;
-  left: 85%;
-  top: 14%;
-  bottom: 12%;
-}
-.contactIcon{
-  position: absolute;
-  left: 92%;
-  top: 14%;
-  bottom: 12%; 
-}
-.logo1{
-  position: absolute;
-  top: 12%;
-  left: 4%;
 }

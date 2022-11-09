@@ -1,27 +1,33 @@
-import React from 'react'
-import chicken from "../../assets/images/chicken.png"
-import cart from "../../assets/images/cart.png"
-import heart from "../../assets/images/heart.png"
-
+import React from 'react';
+import chicken from '../../assets/images/chicken.png';
+import cart from '../../assets/images/cart.png';
+import heart from '../../assets/images/heart.png';
 
 export default function product() {
-    return (
-        <div className="mx-[18px] w-[217px] hoverCustomer drop-shadow-[10px_10px_10px_rgba(0,0,0,0.12)] h-[288px] rounded-[30px] ">
-            <div className="iconDetail">
-                <img src={heart} className="iconP" alt="" />
-                <img src={cart} className="iconP" alt="" />
-            </div>
+  return (
+    <div className="group relative mx-[18px] w-[217px] shadow-lg shadow-gray-500 h-[288px] rounded-[30px] hover:cursor-pointer">
+      <div className="absolute flex justify-center items-center group-hover:hidden z-[1000] top-0 left-0 h-[35px] w-[67px] bg-[#BB0707] rounded-tl-[20px] rounded-br-[20px]">
+        <span className="text-[18px] font-bold text-white">30%</span>
+      </div>
 
-            <div className="sale">30%</div>
+      <div className="relative h-[70%] group-hover:bg-yellow-300 rounded-t-[30px] group-hover:opacity-40">
+        <img
+          src={chicken}
+          alt="chicken"
+          className="w-full h-full object-cover"
+        ></img>
+      </div>
 
-            <div className="w-[217px] h-[205px] topProduct rounded-t-[30px]">
-                <img src={chicken} alt="chicken" className="w-full h-full"></img>
-            </div>
-
-            <div className="test text-[24px] bottomProduct flex-col justify-center h-[83px] rounded-b-[30px]">
-                <div className="colorPrimary text-xl text-center ">Fred Chicken</div>
-                <div className="colorPrimary opacity-50 text-center">1.2 USD</div>
-            </div>
+      <div className="absolute top-0 left-0 w-full h-[70%] z-[999] hidden group-hover:block">
+        <div className="flex justify-around h-[100%] items-center">
+          <img src={heart} className="max-w-[56.38px] object-contain" alt="" />
+          <img src={cart} className="max-w-[56.38px] object-contain" alt="" />
         </div>
-    )
+      </div>
+      <div className="text-[24px] h-[30%] group-hover:bg-[#FFB100] rounded-b-[30px]">
+        <p className="text-xl text-center text-[#BB0707] pt-4">Fred Chicken</p>
+        <p className="text-center text-[#BB0707] opacity-50">1.2 USD</p>
+      </div>
+    </div>
+  );
 }

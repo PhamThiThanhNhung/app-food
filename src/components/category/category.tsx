@@ -1,11 +1,20 @@
-import Hot from "../../assets/images/hot.png";
+import React from 'react';
+interface IProps {
+  title: string;
+  image: any;
+}
 
-const Category = () => {
+const Category: React.FC<IProps> = ({ title, image }) => {
   return (
-    <div className="flex-col items-center h-[198.21px] w-[134px] p-2 border-4 text-center bg-white	text-zinc-50 text-2xl	rounded-[30px]">
-      <img src={Hot} className="w-[110.55px] h-[106.21px] " alt="" />
-      <span className="text-center font-bold text-red-600 w-[44px] h-[33px]">
-        Hot
+    <div
+      className="group flex flex-col items-center mt-[10px] h-[198.21px] w-[134px] bg-white text-2xl rounded-[30px] shadow-orange-300 shadow-lg hover:cursor-pointer hover:bg-[#FFB100]
+    "
+    >
+      <div className="my-[10px] bg-[#BB0707] px-[30px] py-[22px] rounded-full">
+        <img src={image} className="object-cover" alt="hot" />
+      </div>
+      <span className="text-center text-[24px] font-bold text-[#BB0707] group-hover:text-white">
+        {title}
       </span>
     </div>
   );
