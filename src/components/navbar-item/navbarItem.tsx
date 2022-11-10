@@ -1,26 +1,30 @@
-import React from 'react';
-interface IProps {
-  index: string;
-  number: any;
-}
+import React, { ComponentType } from 'react';
 
-const NavbarItem: React.FC<IProps> = ({ index, number }) => {
+type IProps = {
+  icon: ComponentType;
+  title: string;
+};
+
+type DataNavbarItem = {
+  navbarItems: IProps[];
+};
+
+const NavbarItem: React.FC<DataNavbarItem> = ({ navbarItems }) => {
   return (
-    <div
-      className="group flex flex-col items-center h-[173.21px] w-[180px] text-2xl rounded-[50px] shadow-gray-400 shadow-lg hover:cursor-pointer hover:bg-[#BB0707]
+    <>
+      {navbarItems.map((item: IProps, index: number) => (
+        <div
+          key={index}
+          className="group flex flex-col items-center justify-center gap-5 h-[173.21px] w-[180px] rounded-[30px] shadow-gray-400 shadow-lg hover:cursor-pointer hover:bg-[#BB0707]
     "
-    >
-      <div className="mx-[10px] rounded-full">
-        <img
-          src={number}
-          className="object-cover px-[50px] py-[30px] "
-          alt="hot"
-        />
-      </div>
-      <span className=" text-[24px] font-bold text-[#BB0707] group-hover:text-white">
-        {index}
-      </span>
-    </div>
+        >
+          <item.icon />
+          <span className=" text-[24px] font-bold text-[#BB0707] group-hover:text-white">
+            {item.title}
+          </span>
+        </div>
+      ))}
+    </>
   );
 };
 

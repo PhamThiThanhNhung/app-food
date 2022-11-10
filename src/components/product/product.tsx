@@ -2,14 +2,13 @@ import React from 'react';
 import cart from '../../assets/images/cart.png';
 import heart from '../../assets/images/heart.png';
 
-interface props{
-    Image: any;
-    Name: string;
-    Price: number;
+interface props {
+  image: any;
+  name: string;
+  price: number;
 }
 
-
- const Product: React.FC<props> = ({Image, Name, Price}) => {
+const Product: React.FC<props> = ({ image, name, price }) => {
   return (
     <div className="group relative mx-[18px] w-[217px] shadow-lg shadow-gray-500 h-[288px] rounded-[30px] hover:cursor-pointer">
       <div className="absolute flex justify-center items-center group-hover:hidden z-[1000] top-0 left-0 h-[35px] w-[67px] bg-[#BB0707] rounded-tl-[20px] rounded-br-[20px]">
@@ -18,7 +17,7 @@ interface props{
 
       <div className="relative h-[70%] group-hover:bg-yellow-300 rounded-t-[30px] group-hover:opacity-40">
         <img
-          src={Image}
+          src={image}
           alt="chicken"
           className="w-full h-full object-cover"
         ></img>
@@ -31,11 +30,11 @@ interface props{
         </div>
       </div>
       <div className="text-[24px] h-[30%] group-hover:bg-[#FFB100] rounded-b-[30px]">
-        <p className="text-xl text-center text-[#BB0707] pt-4">{Name}</p>
-        <p className="text-center text-[#BB0707] opacity-50">{Price}USD</p>
+        <p className="text-xl text-center text-[#BB0707] pt-4">{name}</p>
+        <p className="text-center text-[#BB0707] opacity-50">{price}USD</p>
       </div>
     </div>
   );
-}
+};
 
 export default Product;

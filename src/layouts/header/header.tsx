@@ -1,29 +1,25 @@
 import Search from '../../components/input-search/search';
-import { FaRegHeart } from 'react-icons/fa';
-import { BsCart2 } from 'react-icons/bs';
-import { IoMdContact } from 'react-icons/io';
+import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
+import { FaRegUserCircle } from 'react-icons/fa';
 import logodf from '../../assets/images/logodf.png';
 import Banner from '../../assets/images/Banner.png';
 
 function Header() {
   return (
     <div>
-      <div className="w-full h-[140px] bg-[#F5AF11] relative ">
-        <div className="w-[93px] h-[97px] absolute right-[80%] top-[50%] translate-x-[-80%] translate-y-[-50%]">
-          <img src={logodf} />
+      <div className="w-full h-[140px] flex justify-around items-center bg-[#F5AF11] relative ">
+        <div className="w-[93px] cursor-pointer">
+          <img src={logodf} className="w-full object-cover" alt="logo" />
         </div>
-        <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <Search />
-        </div>
-        <div>
-          <FaRegHeart className="w-[60px] h-[53.21px] fill-white absolute right-[15%] top-[50%] translate-x-[-15%] translate-y-[-50%] " />
-          <BsCart2 className="w-[61.25px] h-[45.94px] fill-white absolute right-[10%] top-[50%] translate-x-[-10%] translate-y-[-50%] " />
-          <IoMdContact className="w-[61.25px] h-[61.25px] fill-white absolute right-[5%] top-[50%] translate-x-[-5%] translate-y-[-50%]" />
+        <Search />
+        <div className="flex justify-center items-center gap-[42px]">
+          <AiOutlineHeart className="text-6xl fill-white hover:cursor-pointer hover:fill-[#BB0707] hover:scale-105" />
+          <AiOutlineShoppingCart className="text-6xl fill-white hover:cursor-pointer hover:fill-[#BB0707] hover:scale-105" />
+          <FaRegUserCircle className="text-5xl fill-white hover:cursor-pointer hover:fill-[#BB0707] hover:scale-105" />
         </div>
       </div>
-
       <div>
-        <img src={Banner} />
+        <img src={Banner} alt="banner" />
       </div>
     </div>
   );

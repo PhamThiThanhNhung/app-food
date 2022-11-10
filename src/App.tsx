@@ -1,8 +1,13 @@
-import React from "react";
-import logo from "./logo.svg";
+import React from 'react';
+import logo from './logo.svg';
+import HomePage from './pages/home-page/home-page';
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 }
 
 export default App;
