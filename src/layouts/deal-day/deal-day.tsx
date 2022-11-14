@@ -42,7 +42,7 @@ const arr = [
 
 const Dealday = () => {
   return (
-    <div className="relative w-[95%] mx-auto mt-[100px] grid lg:grid-cols-7 md:grid-cols-4 rounded-[50px] border-[#BB0707] border-[5px] py-[50px] ">
+    <div className="relative mx-auto mt-[100px] flex rounded-[50px] border-[#BB0707] border-[5px] py-[50px]">
       {arr.map((item, index) => (
         <Product
           key={index}
@@ -51,7 +51,7 @@ const Dealday = () => {
           price={item.price}
         />
       ))}
-      <div className="absolute left-[50%] translate-x-[-50%] top-[-17%] translate-y-[17%] z-[1000] flex items-center justify-around w-[382px] h-[90.77px] border-[5px] border-[#BB0707] rounded-[50px] bg-white">
+      <div className="absolute left-[50%] translate-x-[-50%] top-[-17%] translate-y-[17%] z-[1000] flex items-center justify-around max-w h-[90.77px] border-[5px] border-[#BB0707] rounded-[50px] bg-white">
         <img
           src={hot}
           className="items-center bg-[#FFB100] w-[55px] h-[50.77px] rounded-[60px]"
