@@ -19,3 +19,13 @@ code {
   transition: .3s linear;
   /*Tat ca cac phan tu css transition 2s*/
 }
+::-webkit-scrollbar{
+  width:10px;
+}
+::-webkit-scrollbar-thumb{
+  width:20px;
+  background-color: #F5AF11;
+  border-radius: 10px;
+  border-top: 30px;
+
+}

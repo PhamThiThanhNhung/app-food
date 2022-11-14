@@ -7,7 +7,7 @@ import Banner from '../../assets/images/Banner.png';
 function Header() {
   return (
     <div>
-      <div className="w-full h-[140px] flex justify-around items-center bg-[#F5AF11] relative ">
+      <div className=" w-full h-[140px] flex justify-around items-center bg-[#F5AF11] relative ">
         <div className="w-[93px] cursor-pointer">
           <img src={logodf} className="w-full object-cover" alt="logo" />
         </div>
@@ -19,7 +19,7 @@ function Header() {
         </div>
       </div>
       <div>
-        <img src={Banner} alt="banner" />
+        <img className="w-full" src={Banner} alt="banner" />
       </div>
     </div>
   );
