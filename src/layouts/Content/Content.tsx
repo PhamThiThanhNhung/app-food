@@ -132,6 +132,7 @@ const Content = () => {
                                             image={item.image}
                                             name={item.name}
                                             price={item.price}
+                                            
                                         />
                                     ))}
                                 </div>

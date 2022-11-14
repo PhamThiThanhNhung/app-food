@@ -1,12 +1,14 @@
 import React from 'react'
 import bannerbottom from '../../assets/images/bannerbottom.png'
+import bannerbottom1 from '../../assets/images/bannerbottom1.png'
 
-const footer = () => {
+const Footer = () => {
   return (
     <div>
-        <img src={bannerbottom}></img>
+        <img src={bannerbottom} alt=""></img>
+        <img src={bannerbottom1} alt=""></img>
     </div>
   )
 }
 
-export default footer
+export default Footer;

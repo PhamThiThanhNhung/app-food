@@ -1,6 +1,6 @@
 
 import Content from '../../layouts/Content/Content';
-import Footer from '../../layouts/Footer/Footer';
+import Footer from '../../layouts/Footer/footer';
 import Header from '../../layouts/header/header';
 
 

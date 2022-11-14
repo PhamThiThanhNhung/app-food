@@ -7,36 +7,43 @@ const arr = [
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 50
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 200,
+    deal: 50
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 50
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 50
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 10
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 50
   },
   {
     image: chicken,
     name: 'Chicken',
     price: 10,
+    deal: 50
   },
 ];
 
@@ -49,6 +56,7 @@ const Dealday = () => {
           image={item.image}
           name={item.name}
           price={item.price}
+          deal={item.deal}
         />
       ))}
       <div className="absolute left-[50%] translate-x-[-50%] top-[-17%] translate-y-[17%] z-[1000] flex items-center justify-around max-w h-[90.77px] border-[5px] border-[#BB0707] rounded-[50px] bg-white">
