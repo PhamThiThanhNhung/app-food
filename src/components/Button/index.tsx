@@ -10,7 +10,7 @@ interface IButtonProps {
 const Button = ({icon, name, className, onClick}: IButtonProps) => {
   return (
     <div
-     className={`text-white py-[10px] px-[20px] bg-[#BB0707] ${className} cursor-pointer rounded-[20px] h-fit w-fit text-[32px]`}
+     className={`text-white py-[10px] px-[20px] bg-[#BB0707] ${className} cursor-pointer rounded-[20px] h-fit w-fit`}
      onClick={onClick}
      >
         {icon}

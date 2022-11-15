@@ -104,10 +104,12 @@ const Content = () => {
                         <Button
                             name="Menu Category"
                             onClick={() => null}
+                            className="text-[32px]"
                         />
                         <Button
                             name="Menu Order"
                             onClick={() => null}
+                            className="text-[32px]"
                         />
                     </div>
                     <div className="flex mt-[46px] ">
