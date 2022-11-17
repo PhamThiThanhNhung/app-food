@@ -6,7 +6,7 @@ import Header from '../../layouts/header/header';
 import OrderModal from '../../layouts/order-modal/order-modal';
 
 const HomePage = () => {
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <div className="mb-10 px-[30px]9">
