@@ -3,6 +3,7 @@ import bannera from '../../assets/images/bannera.jpg';
 import { BsFacebook, BsApple } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import Button from '../../components/Button';
+
 const Register = () => {
   return (
     <div className="bg-[#FFB100] w-screen h-screen flex justify-center">

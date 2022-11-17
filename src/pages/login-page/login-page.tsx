@@ -25,12 +25,14 @@ const Login = () => {
           ></input>
           <Button
             name="Đăng nhập"
-            className="w-full h-[50px] bg-[#BB0707] rounded-[20px] text-[24px] text-center mb-[10px]"
+            className="w-full h-[50px] bg-[#BB0707] rounded-[20px] text-[24px] text-center mb-[10px] py-[10px] px-[20px]"
             onClick={() => null}
           />
-          <p className="mb-[10px] w-full">
-            <span className="cursor-pointer">Quên mật khẩu?</span>
-          </p>
+          <Button
+            name="Mày dám quên mật khẩu?"
+            onClick={() => null}
+            className="text-[#BB0707] pb-[20px]"
+          />
           <div className="flex justify-around items-center gap-x-[5px] w-full">
             <div className="w-full border-[0.5px] border-[#FFB100] h-0 bg-[#FFB100] relative">
               <span className="absolute top-1/2 left-1/2 bg-white px-[8px] translate-y-[-50%] translate-x-[-50%]">
@@ -54,10 +56,10 @@ const Login = () => {
           </div>
           <div className="flex justify-center">
             <p>Bạn mới biết đến chúng tôi?</p>
-            <button
-              name="Bạn dám quên mật khẩu"
-              className="text-[#BB0707] "
+            <Button
+              name="Đăng kí"
               onClick={() => null}
+              className="text-[#BB0707] pl-[10px]"
             />
           </div>
         </div>
