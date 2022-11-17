@@ -54,12 +54,11 @@ const Login = () => {
           </div>
           <div className="flex justify-center">
             <p>Bạn mới biết đến chúng tôi?</p>
-            <a
-              href="https://www.youtube.com/results?search_query=react+router+dom"
-              className="text-[#BB0707] pl-[15px]"
-            >
-              Đăng kí
-            </a>
+            <button
+              name="Bạn dám quên mật khẩu"
+              className="text-[#BB0707] "
+              onClick={() => null}
+            />
           </div>
         </div>
       </div>
