@@ -63,14 +63,12 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
             <div className="w-[68%]">
               <Button
                 name="Menu Category"
-                onClick={() => null}
                 className=" text-[32px] bg-[#BB0707] w-[283px] h-[63px] flex justify-center items-center"
               />
             </div>
             <div className="flex justify-between items-center gap-[100px] w-[32%] ">
               <Button
                 name="Menu Order"
-                onClick={() => null}
                 className="text-[32px] bg-[#BB0707] w-[283px] h-[63px] flex justify-center items-center"
               />
               <TbEdit
@@ -104,9 +102,7 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
               </div>
             </div>
             <div>
-              <Total setIsOpenOrder={function (value: React.SetStateAction<boolean>): void {
-                throw new Error('Function not implemented.');
-              }} />
+              <Total />
             </div>
           </div>
         </div>

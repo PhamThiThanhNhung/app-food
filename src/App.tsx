@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import HomePage from './pages/home-page/home-page';
 import Login from './pages/login-page/login-page';
 import Regester from './pages/register/register';
+
 import { Routes, Route } from 'react-router-dom';
 import OrderProduct from './layouts/order-modal/product-order-modal';
-
 
 function App() {
   return (
@@ -14,7 +14,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Regester />} />
-        <Route path="/order" element={<OrderProduct />} />
       </Routes>
     </div>
   );

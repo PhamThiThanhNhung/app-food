@@ -100,7 +100,6 @@ const OrderProduct = () => {
                 <div className="flex justify-center items-center">
                     <Button
                         name="Purchase"
-                        onClick={() => null}
                         className="flex justify-center items-center text-[18px] text-white w-[258.27px] h-[65px] bg-[#FFB100] rounded-[50px] mt-[32px]"
                     />
                 </div>

@@ -4,14 +4,12 @@ interface IButtonProps {
   icon?: React.ReactNode;
   name?: string;
   className?: string;
-  onClick: () => void;
 }
 
-const Button = ({ icon, name, className, onClick }: IButtonProps) => {
+const Button: React.FC<IButtonProps> = ({ icon, name, className }) => {
   return (
     <div
       className={`text-white ${className} cursor-pointer rounded-[20px] h-fit w-fit`}
-      onClick={onClick}
     >
       {icon}
       <span className="">{name}</span>
