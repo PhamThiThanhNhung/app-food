@@ -40,15 +40,15 @@ const Login = () => {
           </div>
           <div className="flex justify-between items-center pb-[20px] gap-x-[6px] mt-[30px] w-full">
             <div className="flex items-center">
-              <BsFacebook className="text-blue-600 text-[27px]" />
-              <span>Facebook</span>
-            </div>
-            <div className="flex items-center">
-              <BsApple className="text-[30px]" />
+              <BsApple className="text-[30px] pr-[5px]" />
               <span>App store</span>
             </div>
             <div className="flex items-center">
-              <FcGoogle className="text-[30px]" />
+              <BsFacebook className="text-blue-600 text-[27px]  pr-[5px]" />
+              <span>Facebook</span>
+            </div>
+            <div className="flex items-center">
+              <FcGoogle className="text-[30px] pr-[5px]" />
               <span>Google</span>
             </div>
           </div>

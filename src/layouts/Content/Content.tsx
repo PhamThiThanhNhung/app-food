@@ -9,6 +9,12 @@ import Total from '../../components/total/total';
 import products from '../../data/products';
 import { Dispatch, SetStateAction } from 'react';
 import { TbEdit } from 'react-icons/tb';
+import burger from '../../assets/images/burger.svg'
+import ice from '../../assets/images/ice.svg'
+import hotdog from '../../assets/images/hotdog.svg'
+import pizza from '../../assets/images/pizza.svg'
+import french from '../../assets/images/french.svg'
+import drink from '../../assets/images/drink.svg'
 
 const arr = [
   {
@@ -16,28 +22,28 @@ const arr = [
     image: Hot,
   },
   {
-    title: 'Burgur',
-    image: Hot,
+    title: 'Burger',
+    image: burger,
   },
   {
     title: 'Ice',
-    image: Hot,
+    image: ice,
   },
   {
     title: 'HotDog',
-    image: Hot,
+    image: hotdog,
   },
   {
-    title: 'Hot',
-    image: Hot,
+    title: 'Pizza',
+    image: pizza,
   },
   {
-    title: 'Hot',
-    image: Hot,
+    title: 'French',
+    image: french,
   },
   {
-    title: 'Hot',
-    image: Hot,
+    title: 'Drink',
+    image: drink,
   },
 ];
 const arrProducts = [];
@@ -89,16 +95,18 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
               <p className="text-[#BB0707] text-[24px] mt-[19.79px] mb-[28px] leading-[23.68px]">
                 Choose Order
               </p>
+
+              <div className="flex flex-wrap gap-y-[28px]">
+                {products.map((item) => (
+                  <Product
+                    image={item.image}
+                    name={item.name}
+                    price={item.price}
+                  />
+                ))}
+              </div>
               <div>
-                <div className="flex flex-wrap gap-y-[28px]">
-                  {products.map((item) => (
-                    <Product
-                      image={item.image}
-                      name={item.name}
-                      price={item.price}
-                    />
-                  ))}
-                </div>
+
               </div>
             </div>
             <div>

@@ -35,7 +35,7 @@ const Product: React.FC<props> = ({ image, name, price, deal }) => {
       </div>
       <div className="text-[24px] h-[30%] group-hover:bg-[#FFB100] rounded-b-[30px]">
         <p className="text-xl text-center text-[#BB0707] pt-4">{name}</p>
-        <p className="text-center text-[#BB0707] opacity-50">{price}USD</p>
+        <p className="text-center text-[#BB0707] opacity-50">{price} $</p>
       </div>
     </div>
   );
