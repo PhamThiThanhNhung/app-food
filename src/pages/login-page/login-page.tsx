@@ -26,11 +26,9 @@ const Login = () => {
           <Button
             name="Đăng nhập"
             className="w-full h-[50px] bg-[#BB0707] rounded-[20px] text-[24px] text-center mb-[10px] py-[10px] px-[20px]"
-            onClick={() => null}
           />
           <Button
             name="Mày dám quên mật khẩu?"
-            onClick={() => null}
             className="text-[#BB0707] pb-[20px]"
           />
           <div className="flex justify-around items-center gap-x-[5px] w-full">
@@ -58,7 +56,6 @@ const Login = () => {
             <p>Bạn mới biết đến chúng tôi?</p>
             <Button
               name="Đăng kí"
-              onClick={() => null}
               className="text-[#BB0707] pl-[10px]"
             />
           </div>

@@ -22,7 +22,6 @@ const Register = () => {
           <Button
             name="Tiếp theo"
             className="w-full h-[50px] bg-[#BB0707] rounded-[20px] text-[24px] text-center mb-[20px]"
-            onClick={() => null}
           />
           <div className="flex justify-around items-center gap-x-[5px] w-full">
             <div className="w-full border-[0.5px] border-[#FFB100] h-0 bg-[#FFB100] relative">
