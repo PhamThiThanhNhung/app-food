@@ -3,7 +3,7 @@ import Modal from '../../components/modal/modal';
 import Content from '../../layouts/Content/Content';
 import Footer from '../../layouts/footer/footer';
 import Header from '../../layouts/header/header';
-import OrderModal from '../../layouts/order-modal/order-modal';
+import OrderModal from '../../layouts/order-modal/empty-order-modal';
 
 const HomePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);

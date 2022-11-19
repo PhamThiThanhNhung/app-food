@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Hot from '../../assets/images/hot.svg';
 import Category from '../../components/category/category';
 import Product from '../../components/product/product';
-import Total from '../../components/Total/total';
+import Total from '../../components/total/total';
 import products from '../../data/products';
 import { Dispatch, SetStateAction } from 'react';
 import { TbEdit } from 'react-icons/tb';
