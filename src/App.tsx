@@ -3,9 +3,8 @@ import logo from './logo.svg';
 import HomePage from './pages/home-page/home-page';
 import Login from './pages/login-page/login-page';
 import Regester from './pages/register/register';
-import Order from './pages/order/Order';
+import Order from './pages/order/order';
 import { Routes, Route } from 'react-router-dom';
-
 
 function App() {
   return (

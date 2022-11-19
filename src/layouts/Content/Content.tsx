@@ -104,9 +104,7 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
               </div>
             </div>
             <div>
-              <Total setIsOpenOrder={function (value: React.SetStateAction<boolean>): void {
-                throw new Error('Function not implemented.');
-              }} />
+              <Total />
             </div>
           </div>
         </div>
