@@ -5,16 +5,16 @@ import Button from '../../components/Button';
 import Hot from '../../assets/images/hot.svg';
 import Category from '../../components/category/category';
 import Product from '../../components/product/product';
-import Total from '../../components/total/total';
 import products from '../../data/products';
+import OrderSidebar from '../order-sidebar/order-sidebar';
 import { Dispatch, SetStateAction } from 'react';
 import { TbEdit } from 'react-icons/tb';
-import burger from '../../assets/images/burger.svg'
-import ice from '../../assets/images/ice.svg'
-import hotdog from '../../assets/images/hotdog.svg'
-import pizza from '../../assets/images/pizza.svg'
-import french from '../../assets/images/french.svg'
-import drink from '../../assets/images/drink.svg'
+import burger from '../../assets/images/burger.svg';
+import ice from '../../assets/images/ice.svg';
+import hotdog from '../../assets/images/hotdog.svg';
+import pizza from '../../assets/images/pizza.svg';
+import french from '../../assets/images/french.svg';
+import drink from '../../assets/images/drink.svg';
 
 const arr = [
   {
@@ -46,7 +46,6 @@ const arr = [
     image: drink,
   },
 ];
-const arrProducts = [];
 
 type IProps = {
   setIsOpenModal: Dispatch<SetStateAction<boolean>>;
@@ -105,12 +104,10 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
                   />
                 ))}
               </div>
-              <div>
-
-              </div>
+              <div></div>
             </div>
             <div>
-              <Total />
+              <OrderSidebar />
             </div>
           </div>
         </div>
