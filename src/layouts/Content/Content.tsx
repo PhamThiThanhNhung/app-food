@@ -56,11 +56,9 @@ type IProps = {
 
 const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
   // use effect hoac useLoaderData lay du lieu, roi thay the doan nay
-  const deals = products.filter(
-    (p: ProductType | DocumentData) => p.deal && p.deal > 0
-  );
+  const deals = products.filter((p: ProductType | DocumentData) => p.deal > 0);
   const noDeals = products.filter(
-    (p: ProductType | DocumentData) => p.deal && p.deal == 0
+    (p: ProductType | DocumentData) => p.deal === 0
   );
   return (
     <div className="p-[30px]">
