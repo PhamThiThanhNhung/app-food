@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Hot from '../../assets/images/hot.svg';
 import Category from '../../components/category/category';
 import Product from '../../components/product/product';
-import products from '../../data/products';
+// import products from '../../data/products';
 import OrderSidebar from '../order-sidebar/order-sidebar';
 import { Dispatch, SetStateAction } from 'react';
 import { TbEdit } from 'react-icons/tb';
@@ -15,6 +15,8 @@ import hotdog from '../../assets/images/hotdog.svg';
 import pizza from '../../assets/images/pizza.svg';
 import french from '../../assets/images/french.svg';
 import drink from '../../assets/images/drink.svg';
+import { ProductType } from '../../interface';
+import { DocumentData } from 'firebase/firestore/lite';
 
 const arr = [
   {
@@ -49,11 +51,17 @@ const arr = [
 
 type IProps = {
   setIsOpenModal: Dispatch<SetStateAction<boolean>>;
+  products: ProductType[] | DocumentData[];
 };
 
-const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
+const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
   // use effect hoac useLoaderData lay du lieu, roi thay the doan nay
-  const deals = products.filter((p) => p.deal && p.deal > 0);
+  const deals = products.filter(
+    (p: ProductType | DocumentData) => p.deal && p.deal > 0
+  );
+  const noDeals = products.filter(
+    (p: ProductType | DocumentData) => p.deal && p.deal == 0
+  );
   return (
     <div className="p-[30px]">
       <Dealday products={deals} />
@@ -96,11 +104,12 @@ const Content: React.FC<IProps> = ({ setIsOpenModal }) => {
               </p>
 
               <div className="flex flex-wrap gap-y-[28px]">
-                {products.map((item) => (
+                {noDeals.map((item) => (
                   <Product
-                    image={item.image}
-                    name={item.name}
-                    price={item.price}
+                    image={item?.image}
+                    name={item?.name}
+                    price={item?.price}
+                    deal={item?.deal}
                   />
                 ))}
               </div>
