@@ -17,6 +17,7 @@ import french from '../../assets/images/french.svg';
 import drink from '../../assets/images/drink.svg';
 import { ProductType } from '../../interface';
 import { DocumentData } from 'firebase/firestore/lite';
+import { Pagination } from 'antd';
 
 const arr = [
   {
@@ -90,29 +91,37 @@ const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
           </div>
           <div className="flex mt-[46px] ">
             <div className="w-[calc(100%-389px)]">
-              <div className=" max-w-full overflow-x-scroll scrolll mr-[30px] shadow-lg shadow-gray-500 rounded-[30px]">
-                <div className="w-fit flex justify-start gap-x-[47px]">
-                  {arr.map((item) => {
-                    return <Category title={item.title} image={item.image} />;
-                  })}
+              <div>
+                <div className=" max-w-full overflow-x-scroll scrolll mr-[30px] shadow-lg shadow-gray-500 rounded-[30px]">
+                  <div className="w-fit flex justify-start gap-x-[47px]">
+                    {arr.map((item) => {
+                      return <Category title={item.title} image={item.image} />;
+                    })}
+                  </div>
                 </div>
-              </div>
-              <p className="text-[#BB0707] text-[24px] mt-[19.79px] mb-[28px] leading-[23.68px]">
-                Choose Order
-              </p>
+                <p className="text-[#BB0707] text-[24px] mt-[19.79px] mb-[28px] leading-[23.68px]">
+                  Choose Order
+                </p>
 
-              <div className="flex flex-wrap gap-y-[28px]">
-                {noDeals.map((item) => (
-                  <Product
-                    image={item?.image}
-                    name={item?.name}
-                    price={item?.price}
-                    deal={item?.deal}
-                  />
-                ))}
+                <div className="flex flex-wrap gap-y-[28px]">
+                  {noDeals.map((item) => (
+                    <Product
+                      image={item?.image?.url}
+                      name={item?.name}
+                      price={item?.price}
+                      deal={item?.deal}
+                    />
+                  ))}
+                </div>
+                <div></div>
               </div>
-              <div></div>
+              <Pagination
+                className="flex justify-center mt-10"
+                defaultCurrent={1}
+                total={50}
+              />
             </div>
+
             <div>
               <OrderSidebar />
             </div>

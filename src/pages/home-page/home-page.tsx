@@ -12,12 +12,13 @@ import { ProductType } from '../../interface';
 const HomePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [products, setProducs] = useState<ProductType[] | DocumentData[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const ref = collection(db, 'products');
 
   const getProducts = async () => {
     try {
-      const data = await getDocs(ref);
+      const data = await await getDocs(ref);
       const products = data.docs.map((doc) => doc.data());
       if (products) {
         setProducs(products);

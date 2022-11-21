@@ -8,7 +8,7 @@ const Dealday = (props: any) => {
       {props.products.map((item: any) => (
         <Product
           key={item.id}
-          image={item.image}
+          image={item.image.url}
           name={item.name}
           price={item.price}
           deal={item.deal}
