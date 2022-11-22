@@ -11,6 +11,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer components {
+  .navbar-item-active {
+    @apply  fill-white text-7xl;
+  }
+
+  .navbar-item {
+    @apply fill-[#BB0707] group-hover:fill-white text-7xl;
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

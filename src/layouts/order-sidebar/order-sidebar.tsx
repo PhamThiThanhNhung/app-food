@@ -6,7 +6,8 @@ import ProductsOrder from './components/products-order';
 const OrderSidebar: React.FC = () => {
   return (
     <div className="w-[389px] border-[5px] border-[#BB0707] rounded-[50px] flex flex-col px-[28px] py-[33px]">
-      <ProductsOrder />
+      {/* <ProductsOrder /> */}
+      <EmptyOrder />
       <div className="w-full border-[2px] border-[#BB0707] bg-[#BB0707]"></div>
       <div className="flex justify-between mt-[20px] w-full pb-[47px] text-[18px] font-bold">
         <p className=" text-[#938A8A] ml-[10px]">Sub Total:</p>

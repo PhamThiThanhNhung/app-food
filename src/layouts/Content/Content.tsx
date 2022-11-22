@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Dealday from '../deal-day/deal-day';
 import Navbar from '../navbar/navbar';
 import Button from '../../components/Button';
@@ -53,17 +53,42 @@ const arr = [
 type IProps = {
   setIsOpenModal: Dispatch<SetStateAction<boolean>>;
   products: ProductType[] | DocumentData[];
+  productsDeal: ProductType[] | DocumentData[];
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  currentPage: number;
+  totalPage: number;
 };
 
-const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
-  // use effect hoac useLoaderData lay du lieu, roi thay the doan nay
-  const deals = products.filter((p: ProductType | DocumentData) => p.deal > 0);
-  const noDeals = products.filter(
-    (p: ProductType | DocumentData) => p.deal === 0
-  );
+export interface OrderProduct {
+  count: number;
+  productOrder: ProductType | DocumentData;
+}
+
+const Content: React.FC<IProps> = ({
+  setIsOpenModal,
+  products,
+  productsDeal,
+  setCurrentPage,
+  currentPage,
+  totalPage,
+}) => {
+  const [productsOrder, setProductsOrder] = useState<OrderProduct[]>([]);
+
+  console.log('====================================');
+  console.log(productsOrder);
+  console.log('====================================');
+
+  useEffect(() => {
+    localStorage.setItem('list-product-order', JSON.stringify(productsOrder));
+  }, [productsOrder]);
+
   return (
     <div className="p-[30px]">
-      <Dealday products={deals} />
+      <Dealday
+        setProductsOrder={setProductsOrder}
+        productsOrder={productsOrder}
+        products={productsDeal}
+      />
       <div className="flex pt-[30px]  w-full ">
         <div className="w-[20%]">
           <div className="mr-[50px]">
@@ -95,7 +120,13 @@ const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
                 <div className=" max-w-full overflow-x-scroll scrolll mr-[30px] shadow-lg shadow-gray-500 rounded-[30px]">
                   <div className="w-fit flex justify-start gap-x-[47px]">
                     {arr.map((item) => {
-                      return <Category title={item.title} image={item.image} />;
+                      return (
+                        <Category
+                          key={item.title}
+                          title={item.title}
+                          image={item.image}
+                        />
+                      );
                     })}
                   </div>
                 </div>
@@ -104,12 +135,19 @@ const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
                 </p>
 
                 <div className="flex flex-wrap gap-y-[28px]">
-                  {noDeals.map((item) => (
+                  {products.map((item) => (
                     <Product
-                      image={item?.image?.url}
-                      name={item?.name}
-                      price={item?.price}
-                      deal={item?.deal}
+                      onClick={() => {
+                        setProductsOrder([
+                          ...productsOrder,
+                          {
+                            count: 1,
+                            productOrder: item,
+                          },
+                        ]);
+                      }}
+                      key={item.id}
+                      product={item}
                     />
                   ))}
                 </div>
@@ -117,8 +155,9 @@ const Content: React.FC<IProps> = ({ setIsOpenModal, products }) => {
               </div>
               <Pagination
                 className="flex justify-center mt-10"
-                defaultCurrent={1}
-                total={50}
+                current={currentPage === 1 ? 1 : currentPage}
+                total={totalPage}
+                onChange={(page) => setCurrentPage(page)}
               />
             </div>
 

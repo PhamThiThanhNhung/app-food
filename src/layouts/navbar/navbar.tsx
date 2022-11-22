@@ -1,5 +1,5 @@
-import { Routes, Route, Router } from 'react-router-dom'
-import React from 'react';
+import { Routes, Route, Router } from 'react-router-dom';
+import React, { useState } from 'react';
 import NavbarItem from '../../components/navbar-item/navbarItem';
 import {
   AiFillHome,
@@ -12,55 +12,53 @@ import { HiLogin, HiOutlineLogin } from 'react-icons/hi';
 
 const navbarItems = [
   {
-    icon: () => (
-      <AiFillHome className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <AiFillHome className="navbar-item-active" />,
+    iconUnActive: () => <AiFillHome className="navbar-item" />,
     title: 'Home',
-    link: '/'
+    link: '/',
   },
   {
-    icon: () => (
-      <BsFileText className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <BsFileText className="navbar-item-active" />,
+    iconUnActive: () => <BsFileText className="navbar-item" />,
     title: 'Blog',
-    link: '/blog'
+    link: '/blog',
   },
   {
-    icon: () => (
-      <AiFillMessage className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <AiFillMessage className="navbar-item-active" />,
+    iconUnActive: () => <AiFillMessage className="navbar-item" />,
     title: 'Messages',
-    link: '/messages'
+    link: '/messages',
   },
   {
-    icon: () => (
-      <AiFillContacts className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <AiFillContacts className="navbar-item-active" />,
+    iconUnActive: () => <AiFillContacts className="navbar-item" />,
     title: 'Contact us',
-    link: '/contact-us'
+    link: '/contact-us',
   },
   {
-    icon: () => (
-      <AiFillSetting className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <AiFillSetting className="navbar-item-active" />,
+    iconUnActive: () => <AiFillSetting className="navbar-item" />,
     title: 'Settings',
-    link: '/settings'
+    link: '/settings',
   },
   {
-    icon: () => (
-      <HiLogin className="fill-[#BB0707] group-hover:fill-white text-7xl" />
-    ),
+    iconActive: () => <HiLogin className="navbar-item" />,
+    iconUnActive: () => <HiLogin className="navbar-item" />,
     title: 'Login',
-    link: '/login'
+    link: '/login',
   },
 ];
 
-
 const Navbar = () => {
+  const [currentItem, setCurrentItem] = useState<string>('Home');
   return (
     <div>
       <div className="flex flex-col items-center justify-center gap-5">
-        <NavbarItem navbarItems={navbarItems} />
+        <NavbarItem
+          currentItem={currentItem}
+          setCurrentItem={setCurrentItem}
+          navbarItems={navbarItems}
+        />
       </div>
     </div>
   );
