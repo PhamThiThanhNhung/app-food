@@ -159,10 +159,18 @@ const OrderProductModal: React.FC<IProps> = ({
           <p className="ms:w-[22%] w-[30%]">{Math.ceil(totalPrice)}$</p>
         </div>
         <div className="flex justify-center items-center">
-          <Button
-            name="Purchase"
+          <button
+            onClick={() => {
+              setProductsOrder([]);
+              localStorage.setItem(
+                'list-product-order',
+                JSON.stringify({ data: [] })
+              );
+            }}
             className="flex justify-center items-center text-[18px] text-white w-[258.27px] h-[65px] bg-[#FFB100] rounded-[50px] mt-[32px]"
-          />
+          >
+            Purchase
+          </button>
         </div>
       </div>
     </div>

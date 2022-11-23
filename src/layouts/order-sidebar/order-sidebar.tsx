@@ -7,9 +7,14 @@ import ProductsOrder from './components/products-order';
 interface IProps {
   productsOrder: OrderProduct[];
   count: number;
+  setProductsOrder: React.Dispatch<React.SetStateAction<OrderProduct[]>>;
 }
 
-const OrderSidebar: React.FC<IProps> = ({ productsOrder, count }) => {
+const OrderSidebar: React.FC<IProps> = ({
+  productsOrder,
+  count,
+  setProductsOrder,
+}) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -37,6 +42,7 @@ const OrderSidebar: React.FC<IProps> = ({ productsOrder, count }) => {
       </div>
       <div className="flex justify-center">
         <Button
+          setProductsOrder={setProductsOrder}
           className="bg-[#FFB100] rounded-[100px] py-[20px] px-[80px] "
           name="Purchase"
         />

@@ -109,12 +109,14 @@ const Content: React.FC<IProps> = ({
           <div className=" flex justify-between w-[100%]">
             <div className="w-[68%]">
               <Button
+                setProductsOrder={setProductsOrder}
                 name="Menu Category"
                 className=" text-[32px] bg-[#BB0707] w-[283px] h-[63px] flex justify-center items-center"
               />
             </div>
             <div className="flex justify-between items-center gap-[100px] w-[32%] ">
               <Button
+                setProductsOrder={setProductsOrder}
                 name="Menu Order"
                 className="text-[32px] bg-[#BB0707] w-[283px] h-[63px] flex justify-center items-center"
               />
@@ -207,7 +209,11 @@ const Content: React.FC<IProps> = ({
             </div>
 
             <div>
-              <OrderSidebar count={count} productsOrder={productsOrder} />
+              <OrderSidebar
+                setProductsOrder={setProductsOrder}
+                count={count}
+                productsOrder={productsOrder}
+              />
             </div>
           </div>
         </div>
