@@ -90,7 +90,6 @@ const Content: React.FC<IProps> = ({
   activeCategory,
   getProducts,
 }) => {
-  const [orderPr, setOrderPr] = useState(productsOrder);
   return (
     <div className="p-[30px]">
       <Dealday
@@ -157,17 +156,18 @@ const Content: React.FC<IProps> = ({
                     <Product
                       onClick={() => {
                         if (productsOrder?.length > 0) {
-                          const index = orderPr?.findIndex(
+                          const index = productsOrder?.findIndex(
                             (product) => product.data.id === item.id
                           );
                           if (index > -1) {
-                            orderPr[index].count = orderPr[index].count + 1;
-                            setCount(orderPr[index].count);
-                            orderPr[index].total =
-                              item.price * orderPr[index].count;
+                            productsOrder[index].count =
+                              productsOrder[index].count + 1;
+                            setCount(productsOrder[index].count);
+                            productsOrder[index].total =
+                              item.price * productsOrder[index].count;
                           } else {
                             setProductsOrder([
-                              ...orderPr,
+                              ...productsOrder,
                               {
                                 count: 1,
                                 total: item.price,
@@ -177,7 +177,7 @@ const Content: React.FC<IProps> = ({
                           }
                         } else {
                           setProductsOrder([
-                            ...orderPr,
+                            ...productsOrder,
                             {
                               count: 1,
                               total: item.price,
