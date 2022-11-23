@@ -15,7 +15,12 @@ export interface OrderProduct {
   total: number;
 }
 
-const HomePage = () => {
+interface IProps {
+  currentItem: string;
+  setCurrentItem: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const HomePage: React.FC<IProps> = ({ currentItem, setCurrentItem }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [productsNoDeal, setProducsNoDeal] = useState<
     ProductType[] | DocumentData[]
@@ -120,6 +125,8 @@ const HomePage = () => {
       )}
       <Header />
       <Content
+        setCurrentItem={setCurrentItem}
+        currentItem={currentItem}
         getProducts={getProducts}
         setActiveCategory={setActiveCategory}
         activeCategory={activeCategory}

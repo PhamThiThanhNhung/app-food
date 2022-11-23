@@ -25,7 +25,10 @@ const NavbarItem: React.FC<DataNavbarItem> = ({
         <Link
           key={item.link}
           to={item.link}
-          onClick={() => setCurrentItem(item.title)}
+          onClick={() => {
+            setCurrentItem(item.title);
+            window.scroll(0, 0);
+          }}
         >
           <div
             key={index}

@@ -49,8 +49,12 @@ const navbarItems = [
   },
 ];
 
-const Navbar = () => {
-  const [currentItem, setCurrentItem] = useState<string>('Home');
+interface IProps {
+  currentItem: string;
+  setCurrentItem: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Navbar: React.FC<IProps> = ({ currentItem, setCurrentItem }) => {
   return (
     <div>
       <div className="flex flex-col items-center justify-center gap-5">

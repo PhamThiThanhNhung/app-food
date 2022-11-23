@@ -71,6 +71,8 @@ type IProps = {
   setActiveCategory: React.Dispatch<React.SetStateAction<string>>;
   activeCategory: string;
   getProducts: () => Promise<void>;
+  currentItem: string;
+  setCurrentItem: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const Content: React.FC<IProps> = ({
@@ -85,6 +87,8 @@ const Content: React.FC<IProps> = ({
   setCount,
   count,
   setActiveCategory,
+  currentItem,
+  setCurrentItem,
   activeCategory,
 }) => {
   return (
@@ -98,7 +102,7 @@ const Content: React.FC<IProps> = ({
       <div className="flex pt-[30px]  w-full ">
         <div className="w-[20%]">
           <div className="mr-[50px]">
-            <Navbar />
+            <Navbar currentItem={currentItem} setCurrentItem={setCurrentItem} />
           </div>
         </div>
         <div className="w-[80%]">
