@@ -28,7 +28,7 @@ const HomePage = () => {
   >([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPage, setTotalPage] = useState<number>(0);
-  const [productsOrder, setProductsOrder] = useState<OrderProduct[]>([]);
+  let [productsOrder, setProductsOrder] = useState<OrderProduct[]>([]);
   const [count, setCount] = useState<number>(0);
   const [activeCategory, setActiveCategory] = useState<string>('');
 
