@@ -18,35 +18,44 @@ import drink from '../../assets/images/drink.svg';
 import { ProductType } from '../../interface';
 import { DocumentData } from 'firebase/firestore/lite';
 import { Pagination } from 'antd';
+import { count } from 'console';
+import { OrderProduct } from '../../pages/home-page/home-page';
 
 const arr = [
   {
     title: 'Hot',
     image: Hot,
+    id: '1',
   },
   {
     title: 'Burger',
     image: burger,
+    id: '2',
   },
   {
     title: 'Ice',
     image: ice,
+    id: '3',
   },
   {
     title: 'HotDog',
     image: hotdog,
+    id: '4',
   },
   {
     title: 'Pizza',
     image: pizza,
+    id: '5',
   },
   {
     title: 'French',
     image: french,
+    id: '6',
   },
   {
     title: 'Drink',
     image: drink,
+    id: '7',
   },
 ];
 
@@ -57,12 +66,14 @@ type IProps = {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
   totalPage: number;
-};
-
-export interface OrderProduct {
+  setProductsOrder: React.Dispatch<React.SetStateAction<OrderProduct[]>>;
+  productsOrder: OrderProduct[];
+  setCount: React.Dispatch<React.SetStateAction<number>>;
   count: number;
-  productOrder: ProductType | DocumentData;
-}
+  setActiveCategory: React.Dispatch<React.SetStateAction<string>>;
+  activeCategory: string;
+  getProducts: () => Promise<void>;
+};
 
 const Content: React.FC<IProps> = ({
   setIsOpenModal,
@@ -71,17 +82,14 @@ const Content: React.FC<IProps> = ({
   setCurrentPage,
   currentPage,
   totalPage,
+  productsOrder,
+  setProductsOrder,
+  setCount,
+  count,
+  setActiveCategory,
+  activeCategory,
+  getProducts,
 }) => {
-  const [productsOrder, setProductsOrder] = useState<OrderProduct[]>([]);
-
-  console.log('====================================');
-  console.log(productsOrder);
-  console.log('====================================');
-
-  useEffect(() => {
-    localStorage.setItem('list-product-order', JSON.stringify(productsOrder));
-  }, [productsOrder]);
-
   return (
     <div className="p-[30px]">
       <Dealday
@@ -122,8 +130,18 @@ const Content: React.FC<IProps> = ({
                     {arr.map((item) => {
                       return (
                         <Category
+                          onClick={() => {
+                            setCurrentPage(1);
+                            if (activeCategory === item.id) {
+                              setActiveCategory('');
+                            } else {
+                              setActiveCategory(item.id);
+                            }
+                          }}
+                          activeCategory={activeCategory}
                           key={item.title}
                           title={item.title}
+                          id={item.id}
                           image={item.image}
                         />
                       );
@@ -133,18 +151,46 @@ const Content: React.FC<IProps> = ({
                 <p className="text-[#BB0707] text-[24px] mt-[19.79px] mb-[28px] leading-[23.68px]">
                   Choose Order
                 </p>
-
                 <div className="flex flex-wrap gap-y-[28px]">
                   {products.map((item) => (
                     <Product
                       onClick={() => {
-                        setProductsOrder([
-                          ...productsOrder,
-                          {
-                            count: 1,
-                            productOrder: item,
-                          },
-                        ]);
+                        if (productsOrder.length > 0) {
+                          const index = productsOrder.findIndex(
+                            (product) => product.data.id === item.id
+                          );
+                          if (index > -1) {
+                            productsOrder[index].count =
+                              productsOrder[index].count + 1;
+                            setCount(productsOrder[index].count);
+                            productsOrder[index].total =
+                              item.price * productsOrder[index].count;
+                          } else {
+                            setProductsOrder([
+                              ...productsOrder,
+                              {
+                                count: 1,
+                                total: item.price,
+                                data: item,
+                              },
+                            ]);
+                          }
+                        } else {
+                          setProductsOrder([
+                            ...productsOrder,
+                            {
+                              count: 1,
+                              total: item.price,
+                              data: item,
+                            },
+                          ]);
+                        }
+                        localStorage.setItem(
+                          'list-product-order',
+                          JSON.stringify({
+                            data: productsOrder,
+                          })
+                        );
                       }}
                       key={item.id}
                       product={item}
@@ -153,16 +199,19 @@ const Content: React.FC<IProps> = ({
                 </div>
                 <div></div>
               </div>
-              <Pagination
-                className="flex justify-center mt-10"
-                current={currentPage === 1 ? 1 : currentPage}
-                total={totalPage}
-                onChange={(page) => setCurrentPage(page)}
-              />
+              {products.length > 0 && (
+                <Pagination
+                  className="flex justify-center mt-10"
+                  current={currentPage === 1 ? 1 : currentPage}
+                  total={totalPage}
+                  pageSize={6}
+                  onChange={(page) => setCurrentPage(page)}
+                />
+              )}
             </div>
 
             <div>
-              <OrderSidebar />
+              <OrderSidebar count={count} productsOrder={productsOrder} />
             </div>
           </div>
         </div>

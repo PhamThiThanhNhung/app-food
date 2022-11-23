@@ -9,6 +9,12 @@ import { db } from '../../firebase/config';
 import { getDocs, collection, DocumentData } from 'firebase/firestore/lite';
 import { ProductType } from '../../interface';
 
+export interface OrderProduct {
+  count: number;
+  data: ProductType | DocumentData;
+  total: number;
+}
+
 const HomePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [productsNoDeal, setProducsNoDeal] = useState<
@@ -22,6 +28,10 @@ const HomePage = () => {
   >([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPage, setTotalPage] = useState<number>(0);
+  const [productsOrder, setProductsOrder] = useState<OrderProduct[]>([]);
+  const [count, setCount] = useState<number>(0);
+  const [activeCategory, setActiveCategory] = useState<string>('');
+
   const limit = 6;
 
   const ref = collection(db, 'products');
@@ -31,7 +41,6 @@ const HomePage = () => {
       const data = await getDocs(ref);
       const products = data.docs.map((doc) => doc.data());
       if (products) {
-        setTotalPage(products.length);
         let deals = [];
         let noDeal = [];
         for (let item of products) {
@@ -41,8 +50,9 @@ const HomePage = () => {
             noDeal.push(item);
           }
         }
-        setAllProductsNoDeal(noDeal);
+        setTotalPage(noDeal.length);
         setProductsDeal(deals);
+        setAllProductsNoDeal(noDeal);
         const startIndex = (currentPage - 1) * limit;
         const result = noDeal.slice(startIndex, startIndex + limit);
         setProducsNoDeal(result);
@@ -56,12 +66,38 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
+    if (activeCategory) {
+      const result = allProductsNoDeal.filter(
+        (item) => item.category === activeCategory
+      );
+      setProducsNoDeal(result);
+      setTotalPage(result.length);
+      const startIndex = (currentPage - 1) * limit;
+      const kq = result.slice(startIndex, startIndex + limit);
+      setProducsNoDeal(kq);
+    } else {
+      setProducsNoDeal(allProductsNoDeal);
+      setTotalPage(allProductsNoDeal.length);
+      const startIndex = (currentPage - 1) * limit;
+      const kq = allProductsNoDeal.slice(startIndex, startIndex + limit);
+      setProducsNoDeal(kq);
+    }
+  }, [activeCategory]);
+
+  useEffect(() => {
     const startIndex = (currentPage - 1) * limit;
     const result = allProductsNoDeal.slice(startIndex, startIndex + limit);
     setProducsNoDeal(result);
   }, [currentPage]);
 
   useEffect(() => {
+    if (localStorage.getItem('list-product-order')) {
+      const str = localStorage.getItem('list-product-order');
+      if (typeof str === 'string') {
+        const result = JSON.parse(str);
+        setProductsOrder(result.data);
+      }
+    }
     getProducts();
   }, []);
 
@@ -69,12 +105,28 @@ const HomePage = () => {
     <div className="mb-10 px-[30px]9">
       {isOpenModal && (
         <Modal setIsOpenModal={setIsOpenModal}>
-          {/* <EmptyOrderModal setIsOpenModal={setIsOpenModal} /> */}
-          <OrderProductModal />
+          {productsOrder.length > 0 ? (
+            <OrderProductModal
+              setCount={setCount}
+              setIsOpenModal={setIsOpenModal}
+              setProductsOrder={setProductsOrder}
+              productsOrder={productsOrder}
+              count={count}
+            />
+          ) : (
+            <EmptyOrderModal setIsOpenModal={setIsOpenModal} />
+          )}
         </Modal>
       )}
       <Header />
       <Content
+        getProducts={getProducts}
+        setActiveCategory={setActiveCategory}
+        activeCategory={activeCategory}
+        setCount={setCount}
+        count={count}
+        setProductsOrder={setProductsOrder}
+        productsOrder={productsOrder}
         products={productsNoDeal}
         productsDeal={productsDeal}
         setIsOpenModal={setIsOpenModal}

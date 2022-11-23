@@ -14,7 +14,7 @@ export interface ProductType {
   deal: number | string;
   countLike: number;
   star: Star;
-  Acount: number;
+  amount: number;
   image: string;
   category: number;
 }
