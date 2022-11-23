@@ -155,8 +155,8 @@ const Content: React.FC<IProps> = ({
                   {products.map((item) => (
                     <Product
                       onClick={() => {
-                        if (productsOrder.length > 0) {
-                          const index = productsOrder.findIndex(
+                        if (productsOrder?.length > 0) {
+                          const index = productsOrder?.findIndex(
                             (product) => product.data.id === item.id
                           );
                           if (index > -1) {
