@@ -22,7 +22,7 @@ const OrderSidebar: React.FC<IProps> = ({ productsOrder, count }) => {
 
   return (
     <div className="w-[389px] border-[5px] border-[#BB0707] rounded-[50px] flex flex-col px-[28px] py-[33px]">
-      {productsOrder.length > 0 ? (
+      {productsOrder?.length > 0 ? (
         <ProductsOrder productsOrder={productsOrder} />
       ) : (
         <EmptyOrder />
