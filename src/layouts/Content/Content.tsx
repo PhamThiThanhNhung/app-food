@@ -88,7 +88,6 @@ const Content: React.FC<IProps> = ({
   count,
   setActiveCategory,
   activeCategory,
-  getProducts,
 }) => {
   return (
     <div className="p-[30px]">
@@ -156,7 +155,8 @@ const Content: React.FC<IProps> = ({
                     <Product
                       onClick={() => {
                         if (productsOrder?.length > 0) {
-                          const index = productsOrder?.findIndex(
+                          const arr = [...productsOrder];
+                          const index = arr?.findIndex(
                             (product) => product.data.id === item.id
                           );
                           if (index > -1) {
@@ -166,24 +166,18 @@ const Content: React.FC<IProps> = ({
                             productsOrder[index].total =
                               item.price * productsOrder[index].count;
                           } else {
-                            setProductsOrder([
+                            const arr = [
                               ...productsOrder,
-                              {
-                                count: 1,
-                                total: item.price,
-                                data: item,
-                              },
-                            ]);
+                              { count: 1, total: item.price, data: item },
+                            ];
+                            setProductsOrder(arr);
                           }
                         } else {
-                          setProductsOrder([
+                          const arr = [
                             ...productsOrder,
-                            {
-                              count: 1,
-                              total: item.price,
-                              data: item,
-                            },
-                          ]);
+                            { count: 1, total: item.price, data: item },
+                          ];
+                          setProductsOrder(arr);
                         }
                         localStorage.setItem(
                           'list-product-order',

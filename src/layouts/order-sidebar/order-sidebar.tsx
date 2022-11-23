@@ -11,15 +11,14 @@ interface IProps {
 
 const OrderSidebar: React.FC<IProps> = ({ productsOrder, count }) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [orderPr, setOrderPr] = useState(productsOrder);
 
   useEffect(() => {
-    let total = 0;
-    for (let item of orderPr) {
-      total = total + item.total;
+    let result = 0;
+    for (let { total } of productsOrder) {
+      result = result + total;
     }
-    setTotalPrice(total);
-  }, [orderPr, count]);
+    setTotalPrice(result);
+  }, [productsOrder, count]);
 
   return (
     <div className="w-[389px] border-[5px] border-[#BB0707] rounded-[50px] flex flex-col px-[28px] py-[33px]">
