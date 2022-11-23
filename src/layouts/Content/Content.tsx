@@ -5,7 +5,6 @@ import Button from '../../components/Button';
 import Hot from '../../assets/images/hot.svg';
 import Category from '../../components/category/category';
 import Product from '../../components/product/product';
-// import products from '../../data/products';
 import OrderSidebar from '../order-sidebar/order-sidebar';
 import { Dispatch, SetStateAction } from 'react';
 import { TbEdit } from 'react-icons/tb';
@@ -18,7 +17,6 @@ import drink from '../../assets/images/drink.svg';
 import { ProductType } from '../../interface';
 import { DocumentData } from 'firebase/firestore/lite';
 import { Pagination } from 'antd';
-import { count } from 'console';
 import { OrderProduct } from '../../pages/home-page/home-page';
 
 const arr = [
@@ -89,9 +87,6 @@ const Content: React.FC<IProps> = ({
   setActiveCategory,
   activeCategory,
 }) => {
-  const [orderaa, setOrderaa] = useState([...productsOrder]);
-  console.log(productsOrder);
-
   return (
     <div className="p-[30px]">
       <Dealday
@@ -157,11 +152,8 @@ const Content: React.FC<IProps> = ({
                   {products.map((item) => (
                     <Product
                       onClick={() => {
-                        console.log(orderaa);
-                        if (orderaa.length > 0) {
-                          console.log(orderaa);
-
-                          const arr = [...orderaa];
+                        if (productsOrder.length > 0) {
+                          const arr = [...productsOrder];
                           const index = arr?.findIndex(
                             (product) => product.data.id === item.id
                           );
@@ -169,25 +161,19 @@ const Content: React.FC<IProps> = ({
                             arr[index].count = arr[index].count + 1;
                             setCount(arr[index].count);
                             arr[index].total = item.price * arr[index].count;
-                            setOrderaa([...arr]);
                             setProductsOrder(arr);
                           } else {
                             const arr = [
                               ...productsOrder,
                               { count: 1, total: item.price, data: item },
                             ];
-                            setOrderaa([...arr]);
                             setProductsOrder(arr);
                           }
                         } else {
-                          console.log(orderaa);
-
                           const arr = [
-                            ...orderaa,
+                            ...productsOrder,
                             { count: 1, total: item.price, data: item },
                           ];
-                          console.log(arr);
-                          setOrderaa([...arr]);
                           setProductsOrder([...arr]);
                         }
                         localStorage.setItem(
