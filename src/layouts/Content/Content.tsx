@@ -93,6 +93,7 @@ const Content: React.FC<IProps> = ({
         setProductsOrder={setProductsOrder}
         productsOrder={productsOrder}
         products={productsDeal}
+        setCount={setCount}
       />
       <div className="flex pt-[30px]  w-full ">
         <div className="w-[20%]">

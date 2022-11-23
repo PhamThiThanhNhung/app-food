@@ -10,12 +10,14 @@ interface IProps {
   setProductsOrder: React.Dispatch<React.SetStateAction<OrderProduct[]>>;
   productsOrder: OrderProduct[];
   products: ProductType[] | DocumentData[];
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Dealday: React.FC<IProps> = ({
   productsOrder,
   setProductsOrder,
   products,
+  setCount,
 }) => {
   return (
     <div className="relative mx-auto mt-[100px] flex rounded-[50px] border-[#BB0707] border-[5px] py-[50px]">
@@ -23,34 +25,29 @@ const Dealday: React.FC<IProps> = ({
         <Product
           onClick={() => {
             if (productsOrder.length > 0) {
-              const index = productsOrder.findIndex(
+              const arr = [...productsOrder];
+              const index = arr?.findIndex(
                 (product) => product.data.id === item.id
               );
               if (index > -1) {
-                productsOrder[index].count = productsOrder[index].count + 1;
-                productsOrder[index].total =
-                  item.price * productsOrder[index].count;
+                arr[index].count = arr[index].count + 1;
+                setCount(arr[index].count);
+                arr[index].total = item.price * arr[index].count;
+                setProductsOrder(arr);
               } else {
-                setProductsOrder([
+                const arr = [
                   ...productsOrder,
-                  {
-                    count: 1,
-                    total: item.price,
-                    data: item,
-                  },
-                ]);
+                  { count: 1, total: item.price, data: item },
+                ];
+                setProductsOrder(arr);
               }
             } else {
-              setProductsOrder([
+              const arr = [
                 ...productsOrder,
-                {
-                  count: 1,
-                  total: item.price,
-                  data: item,
-                },
-              ]);
+                { count: 1, total: item.price, data: item },
+              ];
+              setProductsOrder([...arr]);
             }
-            console.log(productsOrder);
             localStorage.setItem(
               'list-product-order',
               JSON.stringify({
