@@ -89,6 +89,9 @@ const Content: React.FC<IProps> = ({
   setActiveCategory,
   activeCategory,
 }) => {
+  const [orderaa, setOrderaa] = useState([...productsOrder]);
+  console.log(productsOrder);
+
   return (
     <div className="p-[30px]">
       <Dealday
@@ -154,30 +157,38 @@ const Content: React.FC<IProps> = ({
                   {products.map((item) => (
                     <Product
                       onClick={() => {
-                        if (productsOrder?.length > 0) {
-                          const arr = [...productsOrder];
+                        console.log(orderaa);
+                        if (orderaa.length > 0) {
+                          console.log(orderaa);
+
+                          const arr = [...orderaa];
                           const index = arr?.findIndex(
                             (product) => product.data.id === item.id
                           );
                           if (index > -1) {
-                            productsOrder[index].count =
-                              productsOrder[index].count + 1;
-                            setCount(productsOrder[index].count);
-                            productsOrder[index].total =
-                              item.price * productsOrder[index].count;
+                            arr[index].count = arr[index].count + 1;
+                            setCount(arr[index].count);
+                            arr[index].total = item.price * arr[index].count;
+                            setOrderaa([...arr]);
+                            setProductsOrder(arr);
                           } else {
                             const arr = [
                               ...productsOrder,
                               { count: 1, total: item.price, data: item },
                             ];
+                            setOrderaa([...arr]);
                             setProductsOrder(arr);
                           }
                         } else {
+                          console.log(orderaa);
+
                           const arr = [
-                            ...productsOrder,
+                            ...orderaa,
                             { count: 1, total: item.price, data: item },
                           ];
-                          setProductsOrder(arr);
+                          console.log(arr);
+                          setOrderaa([...arr]);
+                          setProductsOrder([...arr]);
                         }
                         localStorage.setItem(
                           'list-product-order',

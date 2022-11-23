@@ -14,6 +14,7 @@ const OrderSidebar: React.FC<IProps> = ({ productsOrder, count }) => {
 
   useEffect(() => {
     let result = 0;
+
     const arr = [...productsOrder];
     for (let { total } of arr) {
       result = result + total;

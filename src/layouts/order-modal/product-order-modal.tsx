@@ -22,6 +22,7 @@ const OrderProductModal: React.FC<IProps> = ({
   count,
 }) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [prOrder, setPrOrder] = useState([...productsOrder]);
 
   const handleDecreaseCount = (id: any) => {
     const index = productsOrder.findIndex((item) => item.data.id === id);
@@ -63,24 +64,26 @@ const OrderProductModal: React.FC<IProps> = ({
   };
 
   const handleDelete = (id: any) => {
-    const index = productsOrder.findIndex((item) => item.data.id === id);
+    let arr = [...productsOrder];
+    const index = arr.findIndex((item) => item.data.id === id);
     if (index > -1) {
-      productsOrder.splice(index, 1);
+      arr.splice(index, 1);
       setCount(0);
     }
-    setProductsOrder(productsOrder);
+    setProductsOrder(arr);
     setCount(Math.random());
     localStorage.setItem(
       'list-product-order',
       JSON.stringify({
-        data: productsOrder,
+        data: arr,
       })
     );
   };
 
   useEffect(() => {
     let total = 0;
-    for (let item of productsOrder) {
+    const arr = [...productsOrder];
+    for (let item of arr) {
       total = total + item.total;
     }
     setTotalPrice(total);
